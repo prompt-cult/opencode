@@ -7,11 +7,16 @@ on:
     paths:
       - packages/web/src/content/docs/*.mdx
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   sync-locales:
     if: false
     #if: github.actor != 'opencode-agent[bot]'
     runs-on: blacksmith-4vcpu-ubuntu-2404
+    timeout-minutes: 30
     permissions:
       contents: write
     steps:
