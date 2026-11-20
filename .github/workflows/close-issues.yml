@@ -8,6 +8,7 @@ on:
 jobs:
   close:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: read
       issues: write
